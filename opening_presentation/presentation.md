@@ -20,68 +20,68 @@ Una herramienta diseñada para ser utilizada a través de una interfaz de texto.
 Estas pueden categorizarse como:
 
 - Intérpretes de línea de comando
-  - grep
-  - xclip
-  - fd
-  - jq
+    - grep
+    - xclip
+    - fd
+    - jq
 - TUIs
-  - htop
-  - ranger
-  - fzf
-  - spotify-tui
+    - htop
+    - ranger
+    - fzf
+    - spotify-tui
 
 # Ejemplos de aplicaciones
 
 Vamos a ver algunas aplicaciones para inspirarnos.
 
 - youtube-dl
-  - Descarga video de YouTube u otros sitios. 
-  - Escrito en Python.
-  - Ejemplo: `yt-dlp https://www.youtube.com/watch?v=Lngmx0v3aOs`
+    - Descarga video de YouTube u otros sitios. 
+    - Escrito en Python.
+    - Ejemplo: `yt-dlp https://www.youtube.com/watch?v=Lngmx0v3aOs`
 - httpie
-  - Un cliente http para la terminal.
-  - Escrito en Python.
-  - Ejemplo: `http httpbin.org/status/418`
+    - Un cliente http para la terminal.
+    - Escrito en Python.
+    - Ejemplo: `http httpbin.org/status/418`
 - ranger
-  - Un file manager para la terminal.
-  - Escrito en Python.
+    - Un file manager para la terminal.
+    - Escrito en Python.
 - fzf
-  - Un fuzzy finder.
-  - Escrito en Go.
-  - Muy útil combinado con otras herramientas en scripts.
+    - Un fuzzy finder.
+    - Escrito en Go.
+    - Muy útil combinado con otras herramientas en scripts.
 - patat
-  - Presentaciones en la terminal.
-  - Escrito en Haskell.
-  - Usado para hacer esta presentación :).
+    - Presentaciones en la terminal.
+    - Escrito en Haskell.
+    - Usado para hacer esta presentación :).
 - figlet
-  - Arte ascii.
-  - Escrito en C.
-  - Ejemplo: `figlet "CLI Week <3"`
-  - Ver también:
-    - `toilet "CLI Week <3" --gay`
-    - `toilet "CLI Week <3" | lolcat`
+    - Arte ascii.
+    - Escrito en C.
+    - Ejemplo: `figlet "CLI Week <3"`
+    - Ver también:
+        - `toilet "CLI Week <3" --gay`
+        - `toilet "CLI Week <3" | lolcat`
 
 # Editores de texto
 
 - vim
-  - Editor de texto modal.
-  - Escrito en C.
-  - Configurado en VimL.
+    - Editor de texto modal.
+    - Escrito en C.
+    - Configurado en VimL.
 - nvim
-  - Sucesor de vim.
-  - Configurado en VimL o Lua.
+    - Sucesor de vim.
+    - Configurado en VimL o Lua.
 - helix
-  - Editor de texto modal.
-  - Escrito en Rust.
-  - Configurado en archivos toml.
+    - Editor de texto modal.
+    - Escrito en Rust.
+    - Configurado en archivos toml.
 - emacs
-  - Configurado en un EmacsLisp.
-  - Mucho más que un editor.
+    - Configurado en un EmacsLisp.
+    - Mucho más que un editor.
 - micro
-  - Sencillo.
-  - Se tiene planeado implementar keybindings de Vim.
-  - Escrito en Go.
-  - Cuenta con un plugin manager builtin.
+    - Sencillo.
+    - Se tiene planeado implementar keybindings de Vim.
+    - Escrito en Go.
+    - Cuenta con un plugin manager builtin.
 
 # Y muchas más
 
@@ -99,6 +99,8 @@ Ahora vamos a ver cómo podríamos hacer nuestra propia herramienta de CLI.
 - Ejemplo: `printf "CLI Week \033[31m<3\033[m\n"`
 - El file manager fff está escrito en Bash únicamente utilizando estas
   secuencias de escape: https://github.com/dylanaraps/fff.
+- Algunas librerías son simple wrappers para estas secuencias de escape, como 
+  `ansi-terminal` en el ecosistema de Haskell.
 - Referencia: https://www2.ccs.neu.edu/research/gpc/VonaUtils/vona/terminal/vtansi.htm
 
 # ncurses
@@ -214,6 +216,34 @@ render (
     ->bold()
 );
 ```
+
+# tcell
+
+- Lenguaje: Go
+- Github: https://github.com/gdamore/tcell
+- Ejemplos:
+    - micro
+    - fzf
+    - lf
+
+
+# Procesamiento de argumentos
+
+Ejemplo:
+```bash
+ls --color=auto --hyperlink=auto -lh some-dir
+#   ^------- flags ----^  switch -^   ^- argumento
+```
+
+- Sin librería (`argc` + `argv`)
+- Con librería:
+    - argparse: Python
+    - clap: Rust
+    - optparse-applicative: Haskell
+    - flag/cobra: Go
+    - optparse: Ruby
+    - yargs: JavaScript (Node)
+    - GetOpt: Php
 
 # ¡Ahora te toca a ti!
 
